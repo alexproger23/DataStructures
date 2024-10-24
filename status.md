@@ -1,3 +1,10 @@
-STAMP: 20241023-080412
+STAMP: 20241024-114907
 OK: file codeforces.id is correct
+ERROR: file CMakeLists.txt is absent
+ERROR: file prj.codeforces/CMakeLists.txt is absent
+ERROR: file prj.lab/CMakeLists.txt is absent
+ERROR: file prj.test/CMakeLists.txt is absent
+ERROR: file prj.test/complex_doctest.cpp is absent
+ERROR: file prj.test/complex_test.cpp is absent
+ERROR: CMake generator failed
 OK: folder prj.codeforces structure is correct
