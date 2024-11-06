@@ -3,7 +3,4 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-project ("Complex")
-
-# Добавьте источник в исполняемый файл этого проекта.
-add_executable (Complexsad "Complex.cpp" "Complex.hpp")
+add_executable (Complex "Complex.cpp" "Complex.hpp")
