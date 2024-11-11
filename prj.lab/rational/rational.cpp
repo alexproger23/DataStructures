@@ -95,11 +95,11 @@ inline std::istream& operator>>(std::istream& istrm, Rational& rhs) {
 	return rhs.readFrom(istrm);
 }
 
-int main() {
-	Rational rt(0);
-	Rational b(1, 4);
-
-	std::cin >> rt;
-	std::cout << b << " " << rt << std::endl;
-	std::cout << b + rt;
-}
+//int main() {
+//	Rational rt(0);
+//	Rational b(1, 4);
+//
+//	std::cin >> rt;
+//	std::cout << b << " " << rt << std::endl;
+//	std::cout << b + rt;
+//}
