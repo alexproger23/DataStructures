@@ -3,20 +3,22 @@
 
 #pragma once
 
-#ifndef RATIONAL
-#define RATIONAL
+#ifndef RATIONAL_HPP
+#define RATIONAL_HPP
 
+#include <cmath>
 #include <iostream>
 
-struct Rational {
+class Rational {
+private:
 	int m;
 	int n;
-
 	static const char divchar{ '/' };
 
+	void normalize();
+public:
 	Rational() : m(0), n(1) {}
-	Rational(int a) : m(a), n(1) {}
-	Rational(int a, int b) : m(a), n(b) {}
+	Rational(int a, int b = 1);
 
 	Rational& operator+=(const Rational& n);
 	Rational& operator+=(const int n);
@@ -27,16 +29,22 @@ struct Rational {
 	Rational& operator/=(const Rational& n);
 	Rational& operator/=(const int n);
 
-	bool operator==(const Rational& n);
-	bool operator!=(const Rational& n);
-	bool operator>(const Rational& n);
-	bool operator<(const Rational& n);
+	bool operator==(const Rational& n) const;
+	bool operator<(const Rational& n) const;
+
+	std::istream& readFrom(std::istream& istr);
+	std::ostream& writeTo(std::ostream& osrt) const;
 };
 
 Rational operator+(Rational lh, const Rational& rh);
 Rational operator-(Rational lh, const Rational& rh);
 Rational operator*(Rational lh, const Rational& rh);
 Rational operator/(Rational lh, const Rational& rh);
+bool operator!=(const Rational& lhs, const Rational& rhs);
+bool operator>(const Rational& lhs, const Rational& rhs);
+bool operator<=(const Rational& lhs, const Rational& rhs);
+bool operator>=(const Rational& lhs, const Rational& rhs);
+
 
 inline std::ostream& operator<<(std::ostream& ostrm, const Rational& rhs);
 inline std::istream& operator>>(std::istream& istrm, Rational& rhs);
