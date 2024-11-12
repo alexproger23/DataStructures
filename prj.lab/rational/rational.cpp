@@ -15,6 +15,7 @@ void Rational::normalize() {
 Rational::Rational(int a, int b) : m(a) {
 	if (b == 0) throw std::exception("can't divide by zero");
 	else n = b;
+	normalize();
 }
 
 
@@ -52,7 +53,7 @@ Rational& Rational::operator/=(const Rational& rhs) {
 Rational& Rational::operator/=(const int rhs) { return operator/=(Rational(rhs)); }
 
 
-bool Rational::operator==(const Rational& rhs) const { return (m == rhs.m) && (n == rhs.n); }
+bool Rational::operator==(const Rational& rhs) const { return ((m == rhs.m) && (n == rhs.n)); }
 bool Rational::operator<(const Rational& rhs) const { return (m*rhs.n < rhs.m*n); }
 
 
@@ -70,6 +71,7 @@ std::istream& Rational::readFrom(std::istream& istr) {
 	}
 	return istr;
 }
+
 std::ostream& Rational::writeTo(std::ostream& ostr) const {
 	ostr << m << divchar << n;
 	return ostr;
@@ -87,19 +89,9 @@ bool operator<=(const Rational& lhs, const Rational& rhs) {	return (lhs < rhs ||
 bool operator>=(const Rational& lhs, const Rational& rhs) { return (lhs > rhs || lhs == rhs); }
 
 
-inline std::ostream& operator<<(std::ostream& ostrm, const Rational& rhs) {
+std::ostream& operator<<(std::ostream& ostrm, const Rational& rhs) {
 	return rhs.writeTo(ostrm);
 }
-
-inline std::istream& operator>>(std::istream& istrm, Rational& rhs) {
+std::istream& operator>>(std::istream& istrm, Rational& rhs) {
 	return rhs.readFrom(istrm);
 }
-
-//int main() {
-//	Rational rt(0);
-//	Rational b(1, 4);
-//
-//	std::cin >> rt;
-//	std::cout << b << " " << rt << std::endl;
-//	std::cout << b + rt;
-//}

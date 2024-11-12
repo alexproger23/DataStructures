@@ -1,8 +1,6 @@
 // Rational.h : включаемый файл для стандартных системных включаемых файлов
 // или включаемые файлы для конкретного проекта.
 
-#pragma once
-
 #ifndef RATIONAL_HPP
 #define RATIONAL_HPP
 
@@ -48,7 +46,7 @@ bool operator<=(const Rational& lhs, const Rational& rhs);
 bool operator>=(const Rational& lhs, const Rational& rhs);
 
 
-inline std::ostream& operator<<(std::ostream& ostrm, const Rational& rhs);
-inline std::istream& operator>>(std::istream& istrm, Rational& rhs);
+std::ostream& operator<<(std::ostream& ostrm, const Rational& rhs);
+std::istream& operator>>(std::istream& istrm, Rational& rhs);
 
 #endif
