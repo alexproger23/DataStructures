@@ -2,7 +2,7 @@
 
 
 void Rational::normalize() {
-	int a = m, b = n;
+	int a = abs(m), b = abs(n);
 	while (a != 0 && b != 0) {
 		if (a > b) a %= b;
 		else b %= a;
@@ -15,6 +15,10 @@ void Rational::normalize() {
 Rational::Rational(int a, int b) : m(a) {
 	if (b == 0) throw std::exception("can't divide by zero");
 	else n = b;
+	if (n < 0) {
+		n = -n;
+		m = -m;
+	}
 	normalize();
 }
 
@@ -51,6 +55,11 @@ Rational& Rational::operator/=(const Rational& rhs) {
 	return *this;
 }
 Rational& Rational::operator/=(const int rhs) { return operator/=(Rational(rhs)); }
+
+Rational& Rational::operator-() {
+	m = -m;
+	return *this;
+}
 
 
 bool Rational::operator==(const Rational& rhs) const { return ((m == rhs.m) && (n == rhs.n)); }

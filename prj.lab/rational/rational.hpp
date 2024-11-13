@@ -29,6 +29,8 @@ public:
 	Rational& operator/=(const Rational& n);
 	Rational& operator/=(const int n);
 
+	Rational& operator-();
+
 	bool operator==(const Rational& n) const;
 	bool operator<(const Rational& n) const;
 
