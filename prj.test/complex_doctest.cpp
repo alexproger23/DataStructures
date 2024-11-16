@@ -1,5 +1,5 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "doctest.hpp"
+#include <doctest/doctest.hpp>
 
 #include "complex/complex.hpp"
 
