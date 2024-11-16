@@ -3,4 +3,4 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-add_executable (Complex "Complex.cpp" "Complex.hpp")
+add_library(complex "Complex.cpp" "Complex.hpp")

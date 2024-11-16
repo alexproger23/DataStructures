@@ -1,21 +1,6 @@
 #include <iostream>
 #include "complex.hpp"
 
-
-int main() {
-	Complex c(0.1, 0.45);
-	Complex b(0.1);
-	b = c -= 0.2;
-	b += c;
-	Complex a = b * c;
-	std::cout << b << " " << c << " " << a << " " << -a << std::endl;
-	Complex g;
-	std::cin >> g;
-	if (std::cin.rdstate() == std::ios_base::goodbit) std::cout << "Correct input: " << g << std::endl;
-	else std::cout << "Error input" << std::endl;
-}
-
-
 //Перегрузка операций вне структуры
 std::ostream& operator<<(std::ostream& ostr, const Complex& cmpl) {
 	ostr << cmpl.leftBrace << cmpl.re << cmpl.separator << cmpl.im << cmpl.rightBrace;
@@ -41,32 +26,49 @@ std::istream& operator>>(std::istream& istr, Complex& cmpl) {
 }
 
 Complex operator+(const Complex& lhs, const Complex& rhs) {
-	Complex cmpl;
-	cmpl += lhs;
-	cmpl += rhs;
-
-	return cmpl;
+	return Complex(lhs).operator+=(rhs);
 }
 
-Complex operator-(const Complex& lhs, const Complex& rhs) {
-	Complex cmpl;
-	cmpl -= lhs;
-	cmpl -= rhs;
+Complex operator+(const Complex& lhs, const double& rhs) {
+	return lhs + Complex(rhs);
+}
+Complex operator+(const double& lhs, const Complex& rhs) {
+	return Complex(lhs) + rhs;
+}
 
-	return cmpl;
+
+Complex operator-(const Complex& lhs, const Complex& rhs) {
+	return Complex(lhs) -= rhs;
+}
+
+Complex operator-(const double& lhs, const Complex& rhs) {
+	return Complex(lhs) - rhs;
+}
+Complex operator-(const Complex& lhs, const double& rhs) {
+	return lhs - Complex(rhs);
 }
 
 Complex operator*(const Complex& lhs, const Complex& rhs) {
-	Complex cmpl(lhs);
-	cmpl *= rhs;
-
-	return cmpl;
+	return Complex(lhs) *= rhs;
 }
 
+Complex operator*(const double& lhs, const Complex& rhs) {
+	return Complex(lhs) * rhs;
+}
+Complex operator*(const Complex& lhs, const double& rhs) {
+	return Complex(rhs) * lhs;
+}
 
-//Определения конструкторов
-Complex::Complex(const double& real) : re(real), im(0.0) {}
-Complex::Complex(const double& real, const double& imag) : re(real), im(imag) {}
+Complex operator/(const Complex& lhs, const Complex& rhs) {
+	return Complex(lhs) /= rhs;
+}
+Complex operator/(const double& lhs, const Complex& rhs) {
+	return Complex(lhs) / rhs;
+}
+Complex operator/(const Complex& lhs, const double& rhs) {
+	return lhs / Complex(rhs);
+}
+
 
 
 //Определения методов
@@ -78,16 +80,11 @@ Complex& Complex::operator+=(const Complex& rhs) {
 }
 
 Complex& Complex::operator+=(const double& real) {
-	/*re += real;
-
-	return *this;*/
 	return operator+=(Complex(real));
 }
 
 Complex& Complex::operator-=(const Complex& rhs) {
-	*this += -rhs;
-
-	return *this;
+	return (*this).operator+=(-rhs);
 }
 
 Complex& Complex::operator-=(const double& rhs) {
@@ -97,8 +94,34 @@ Complex& Complex::operator-=(const double& rhs) {
 }
 
 Complex& Complex::operator*=(const Complex& rhs) {
+	double tempre = re;
 	re = re * rhs.re - im * rhs.im;
-	im = im * rhs.re + re * rhs.im;
+	im = im * rhs.re + tempre * rhs.im;
 
 	return *this;
+}
+
+Complex& Complex::operator*=(const double& rhs) {
+	*this *= Complex(rhs);
+	return *this;
+}
+
+Complex& Complex::operator/=(const Complex & rhs) {
+	double tempre = re;
+	re = (re * rhs.re + im * rhs.im) / (rhs.re * rhs.re + rhs.im * rhs.im);
+	im = (im * rhs.re - tempre * rhs.im) / (rhs.re * rhs.re + rhs.im * rhs.im);
+	return *this;
+}
+
+Complex& Complex::operator/=(const double& rhs) {
+	*this /= Complex(rhs);
+	return *this;
+}
+
+bool Complex::operator==(const Complex& rhs) const {
+	return (re == rhs.re && im == rhs.im);
+}
+
+bool Complex::operator!=(const Complex& rhs) const {
+	return !(*this == rhs);
 }

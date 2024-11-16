@@ -56,9 +56,8 @@ Rational& Rational::operator/=(const Rational& rhs) {
 }
 Rational& Rational::operator/=(const int rhs) { return operator/=(Rational(rhs)); }
 
-Rational& Rational::operator-() { //унарный минус
-	m = -m;
-	return *this;
+Rational& Rational::operator-() {
+	return Rational(-m, n);
 }
 
 

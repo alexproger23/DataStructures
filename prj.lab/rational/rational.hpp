@@ -36,6 +36,8 @@ public:
 
 	std::istream& readFrom(std::istream& istr);
 	std::ostream& writeTo(std::ostream& osrt) const;
+
+	~Rational() = default;
 };
 
 Rational operator+(Rational lh, const Rational& rh);

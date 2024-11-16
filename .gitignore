@@ -34,3 +34,5 @@
 *.vs
 bin.dbg/
 out/
+
+status.logs/
