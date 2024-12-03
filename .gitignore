@@ -36,4 +36,4 @@ bin.dbg/
 out/
 
 status.logs/
-darray/
+#darray/

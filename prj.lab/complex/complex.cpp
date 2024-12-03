@@ -119,7 +119,7 @@ Complex& Complex::operator/=(const double& rhs) {
 }
 
 bool Complex::operator==(const Complex& rhs) const {
-	return (re == rhs.re && im == rhs.im);
+	return (!(std::abs(re - rhs.re) > 0) && !(std::abs(im - rhs.im) > 0));
 }
 
 bool Complex::operator!=(const Complex& rhs) const {

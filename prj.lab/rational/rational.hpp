@@ -14,9 +14,10 @@ private:
 	static const char divchar{ '/' };
 
 	void normalize();
+	void normalize_sign();
 public:
 	Rational() : m(0), n(1) {}
-	Rational(int a, int b = 1);
+	explicit Rational(int a, int b = 1);
 	Rational(const Rational& rhs) = default;
 	Rational& operator=(const Rational& rhs) = default;
 

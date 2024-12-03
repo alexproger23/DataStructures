@@ -1,0 +1,1 @@
+add_executable(arrayd arrayd.h arrayd.cpp)

@@ -5,6 +5,7 @@
 
 TEST_CASE("complex unit tests") {
 	CHECK(Complex() == Complex(0.0, 0.0));
+	CHECK(Complex(3.0) == Complex(2.0, 0.0) + Complex(1.0, 0.0));
 	CHECK(Complex(2.0) == Complex(2.0, 0.0));
 	CHECK(Complex(1, 0) + Complex(2, 4) == Complex(3, 4));
 	CHECK(Complex(2, 3) * Complex(5, -7) == Complex(31, 1));
