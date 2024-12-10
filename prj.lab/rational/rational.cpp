@@ -19,14 +19,12 @@ void Rational::normalize_sign() {
 	}
 }
 
-
 Rational::Rational(int a, int b) : m(a) {
 	if (b == 0) throw std::exception("can't divide by zero");
 	else n = b;
 	normalize_sign();
 	normalize();
 }
-
 
 Rational& Rational::operator+=(const Rational& rhs) {
 	m = m * rhs.n + n * rhs.m;
@@ -71,7 +69,9 @@ Rational Rational::operator-() {
 
 
 bool Rational::operator==(const Rational& rhs) const { return ((m == rhs.m) && (n == rhs.n)); }
+bool Rational::operator==(const int rhs) const { return this->operator==(Rational(rhs)); }
 bool Rational::operator<(const Rational& rhs) const { return (m*rhs.n < rhs.m*n); }
+bool Rational::operator<(const int rhs) const { return this->operator<(Rational(rhs)); }
 
 
 std::istream& Rational::readFrom(std::istream& istr) {
@@ -101,10 +101,29 @@ Rational operator-(Rational lh, const Rational& rh) { return lh -= rh; }
 Rational operator*(Rational lh, const Rational& rh) { return lh *= rh; }
 Rational operator/(Rational lh, const Rational& rh) { return lh /= rh; }
 
+Rational operator+(Rational lh, const int rh) { return lh += rh; }
+Rational operator+(const int lh, Rational rh) { return rh += lh; }
+Rational operator-(Rational lh, const int rh) { return lh -= rh; }
+Rational operator-(const int lh, Rational rh) { return rh -= lh; }
+Rational operator*(Rational lh, const int rh) { return lh *= rh; }
+Rational operator*(const int lh, Rational rh) { return rh *= lh; }
+Rational operator/(Rational lh, const int rh) { return lh /= rh; }
+Rational operator/(const int lh, Rational rh) { return rh /= lh; }
+
+
 bool operator!=(const Rational& lhs, const Rational& rhs) { return !(lhs == rhs); }
 bool operator>(const Rational& lhs, const Rational& rhs) { return !(lhs < rhs); }
 bool operator<=(const Rational& lhs, const Rational& rhs) {	return (lhs < rhs || lhs == rhs); }
 bool operator>=(const Rational& lhs, const Rational& rhs) { return (lhs > rhs || lhs == rhs); }
+
+bool operator!=(const Rational& lhs, const int rhs) { return lhs != Rational(rhs); }
+bool operator!=(const int lhs, const Rational& rhs) { return Rational(lhs) != rhs; }
+bool operator>(const Rational& lhs, const int rhs) { return lhs > Rational(rhs); }
+bool operator>(const int lhs, const Rational& rhs) { return Rational(lhs) > rhs; }
+bool operator<=(const Rational& lhs, const int rhs) { return lhs <= Rational(rhs); }
+bool operator<=(const int lhs, const Rational& rhs) { return Rational(lhs) <=  rhs; }
+bool operator>=(const Rational& lhs, const int rhs) { return lhs >= Rational(rhs); }
+bool operator>=(const int lhs, const Rational& rhs) { return Rational(lhs) >= rhs; }
 
 
 std::ostream& operator<<(std::ostream& ostrm, const Rational& rhs) {

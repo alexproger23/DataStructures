@@ -7,10 +7,8 @@ int main() {
 	int n;
 	std::cout << r << std::endl;
 	Rational r2(1, 3);
-	r = r - r2;
-	Rational r3(2, 4);
-	std::cout << r3 << std::endl;
 	std::cout << r << std::endl;
+	bool b = Rational(1, 1) == Rational(1);
 	try {
 		Rational r(0, 0);
 	}
