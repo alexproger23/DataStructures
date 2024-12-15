@@ -1,6 +1,0 @@
-CMake Error at prj.check/prj.check/doctest_arrayd/CMakeLists.txt:2 (target_link_libraries):
-  Target "arrayd" of type EXECUTABLE may not be linked into another target.
-  One may link only to INTERFACE, OBJECT, STATIC or SHARED libraries, or to
-  executables with the ENABLE_EXPORTS property set.
-
-
