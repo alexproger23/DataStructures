@@ -4,6 +4,7 @@ add_executable(complex_test complex_test.cpp)
 add_executable(complex_doctest complex_doctest.cpp)
 add_executable(arrayd_test arrayd_test.cpp)
 add_executable(arrayd_doctest arrayd_doctest.cpp)
+add_executable(arrayt_test arrayt_test.cpp)
 
 
 target_link_libraries(rational_doctest rational)
@@ -12,3 +13,4 @@ target_link_libraries(complex_test complex)
 target_link_libraries(complex_doctest complex)
 target_link_libraries(arrayd_doctest arrayd)
 target_link_libraries(arrayd_test arrayd)
+target_link_libraries(arrayt_test arrayt)

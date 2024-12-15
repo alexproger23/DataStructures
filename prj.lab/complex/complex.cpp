@@ -106,10 +106,17 @@ Complex& Complex::operator*=(const double& rhs) {
 	return *this;
 }
 
-Complex& Complex::operator/=(const Complex & rhs) {
-	double tempre = re;
-	re = (re * rhs.re + im * rhs.im) / (rhs.re * rhs.re + rhs.im * rhs.im);
-	im = (im * rhs.re - tempre * rhs.im) / (rhs.re * rhs.re + rhs.im * rhs.im);
+Complex& Complex::operator/=(const Complex& rhs) {
+	if (pow(rhs.re, 2) + pow(rhs.im, 2) != 0) {
+		double t = re;
+		re = (re * rhs.re + im * rhs.im) / (pow(rhs.re, 2) + pow(rhs.im, 2));
+		im = (im * rhs.re - t * rhs.im) / (pow(rhs.re, 2) + pow(rhs.im, 2));
+	}
+	else {
+		std::cerr << "Error: dividing by 0. ";
+		re = NAN;
+		im = NAN;
+	}
 	return *this;
 }
 
@@ -119,7 +126,7 @@ Complex& Complex::operator/=(const double& rhs) {
 }
 
 bool Complex::operator==(const Complex& rhs) const {
-	return (!(std::abs(re - rhs.re) > 0) && !(std::abs(im - rhs.im) > 0));
+	return abs(re - rhs.re) < 2 * std::numeric_limits<double>::epsilon() && abs(im - rhs.im) < 2 * std::numeric_limits <double>::epsilon();
 }
 
 bool Complex::operator!=(const Complex& rhs) const {
