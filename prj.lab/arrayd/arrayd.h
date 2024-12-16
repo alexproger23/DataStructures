@@ -16,8 +16,9 @@ public:
 
 	~ArrayD();
 
-	double& operator[](std::ptrdiff_t ind);
 	double operator[](std::ptrdiff_t ind) const;
+	double& operator[](std::ptrdiff_t ind);
+	
 
 	std::ptrdiff_t Size() const noexcept;
 

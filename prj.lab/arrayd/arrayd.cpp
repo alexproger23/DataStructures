@@ -1,13 +1,12 @@
 #include <iostream>
 #include <cstddef>
 
-
 #include "arrayd.h"
 
 
 ArrayD::ArrayD(const ArrayD& d) : capacity_(d.size_), size_(capacity_) {
-	data_ = new double[size_];
-	memcpy(data_, d.data_, size_ * sizeof(double));
+	data_ = new double[size_] {0.0};
+	std::memcpy(data_, d.data_, d.size_ * sizeof(double));
 }
 
 ArrayD::ArrayD(std::ptrdiff_t n) : capacity_(n), size_(n) {
@@ -27,13 +26,14 @@ ArrayD::~ArrayD() {
 	delete[] data_;
 }
 
-double& ArrayD::operator[](std::ptrdiff_t ind) {
-	if (ind >= size_ || ind < 0) throw (std::invalid_argument("ArrayD::ArrayD - index out of range"));
+double ArrayD::operator[](std::ptrdiff_t ind) const {
+	printf("const");
+	if (ind >= size_ || ind < 0) throw (std::out_of_range("arrayd out of range"));
 	return data_[ind];
 }
 
-double ArrayD::operator[](std::ptrdiff_t ind) const {
-	if (ind >= size_ || ind < 0) throw (std::exception("arrayd out of range"));
+double& ArrayD::operator[](std::ptrdiff_t ind) {
+	if (ind >= size_ || ind < 0) throw (std::out_of_range("ArrayD::ArrayD - index out of range"));
 	return data_[ind];
 }
 
@@ -57,7 +57,9 @@ void ArrayD::Resize(std::ptrdiff_t size) {
 			std::memset(data_ + size_, 0.0, (size - size_) * sizeof(double));
 			size_ = size;
 		}
-		else size_ = size;
+		else {
+			size_ = size;
+		}
 	}
 }
 
@@ -73,7 +75,7 @@ void ArrayD::Insert(std::ptrdiff_t index, const double elem) {
 }
 
 void ArrayD::Remove(const std::ptrdiff_t ind) {
-	if (ind >= size_) throw (std::exception("arrayd out of range"));
+	if (ind < 0 || size_ <= ind) throw (std::exception("arrayd out of range"));
 
 	for (ptrdiff_t i = ind; i < size_ - 1; i++)
 		data_[i] = data_[i + 1];
