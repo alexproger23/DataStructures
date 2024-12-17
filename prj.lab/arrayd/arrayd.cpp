@@ -1,5 +1,6 @@
-#include <iostream>
+#include <memory>
 #include <cstddef>
+#include <stdexcept>
 
 #include "arrayd.h"
 
