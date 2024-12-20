@@ -5,7 +5,7 @@ add_executable(complex_doctest complex_doctest.cpp)
 add_executable(arrayd_doctest arrayd_doctest.cpp)
 add_executable(arrayt_doctest arrayt_doctest.cpp)
 add_executable(stackl_doctest stackl_doctest.cpp)
-
+add_executable(queuea_doctest queuea_doctest.cpp)
 
 target_link_libraries(rational_doctest rational)
 target_link_libraries(rational_test rational)
@@ -14,3 +14,4 @@ target_link_libraries(complex_doctest complex)
 target_link_libraries(arrayd_doctest arrayd)
 target_link_libraries(arrayt_doctest arrayt)
 target_link_libraries(stackl_doctest stackl)
+target_link_libraries(queuea_doctest queuea)

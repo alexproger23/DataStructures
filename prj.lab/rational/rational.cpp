@@ -80,6 +80,7 @@ std::istream& Rational::readFrom(std::istream& istr) {
 
 	istr >> tempm >> divch >> tempn;
 	if (istr.good()) {
+		std::cout << "find" << std::endl;
 		if (divch == divchar) {
 			*this = Rational(tempm, tempn);
 			normalize_sign();

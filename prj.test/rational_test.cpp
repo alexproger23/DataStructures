@@ -5,6 +5,7 @@
 int main() {
 	Rational r(4, 6);
 	int n;
+	std::cin >> r;
 	std::cout << -r << std::endl;
 	Rational r2(-1, 3);
 	std::cout << r2 << std::endl;
