@@ -1,1 +1,1 @@
-add_library(arrayd arrayd.h arrayd.cpp)
+add_library(arrayd "arrayd.hpp" arrayd.cpp)
