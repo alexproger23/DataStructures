@@ -1,5 +1,6 @@
 #ifndef ARRAYD
 #define ARRAYD
+#include <stdexcept>
 
 class ArrayD {
 private:

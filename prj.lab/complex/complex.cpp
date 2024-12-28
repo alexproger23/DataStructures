@@ -15,7 +15,7 @@ std::istream& operator>>(std::istream& istr, Complex& cmpl) {
 	double imag(0.0);
 
 	istr >> leftBrace >> real >> separator >> imag >> rightBrace;
-	if (istr.good()) {
+	if (istr.good() || istr.rdstate() == std::ios::eofbit) {
 		if (leftBrace == cmpl.leftBrace && separator == cmpl.separator && rightBrace == cmpl.rightBrace) {
 			cmpl.re = real;
 			cmpl.im = imag;

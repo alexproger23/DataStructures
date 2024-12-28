@@ -2,7 +2,7 @@
 #include <cstddef>
 #include <stdexcept>
 
-#include "arrayd.h"
+#include "arrayd/arrayd.hpp"
 
 
 ArrayD::ArrayD(const ArrayD& d) : capacity_(d.size_), size_(capacity_) {
@@ -44,7 +44,7 @@ std::ptrdiff_t ArrayD::Size() const noexcept {
 
 void ArrayD::Resize(std::ptrdiff_t size) {
 	if (0 >= size) throw std::invalid_argument("ArrayD::ArrayD - non positive size");
-	
+
 	if (capacity_ < size) {
 		double* ndata = new double[size] {0.0};
 		std::memcpy(ndata, data_, size_ * sizeof(double));

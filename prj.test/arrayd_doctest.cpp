@@ -1,7 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <doctest/doctest.hpp>
 
-#include "arrayd/arrayd.h"
+#include "arrayd/arrayd.hpp"
 
 TEST_CASE("arrayd unit tests") {
 	CHECK(ArrayD(3).Size() == 3);
