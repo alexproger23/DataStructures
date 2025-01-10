@@ -1,15 +1,6 @@
 Internal ctest changing into directory: D:/projects/2024-misis-fall/misis2024f-24-01-kuleshevskiy-a-e/build.check
 Test project D:/projects/2024-misis-fall/misis2024f-24-01-kuleshevskiy-a-e/build.check
     Start 1: doctest_arrayd
-Could not find executable D:/projects/2024-misis-fall/misis2024f-24-01-kuleshevskiy-a-e/bin.check/doctest_arrayd.exe
-Looked in the following places:
-D:/projects/2024-misis-fall/misis2024f-24-01-kuleshevskiy-a-e/bin.check/doctest_arrayd.exe
-D:/projects/2024-misis-fall/misis2024f-24-01-kuleshevskiy-a-e/bin.check/doctest_arrayd.exe.exe
-D:/projects/2024-misis-fall/misis2024f-24-01-kuleshevskiy-a-e/bin.check/Release/doctest_arrayd.exe
-D:/projects/2024-misis-fall/misis2024f-24-01-kuleshevskiy-a-e/bin.check/Release/doctest_arrayd.exe.exe
-Release/D:/projects/2024-misis-fall/misis2024f-24-01-kuleshevskiy-a-e/bin.check/doctest_arrayd.exe
-Release/D:/projects/2024-misis-fall/misis2024f-24-01-kuleshevskiy-a-e/bin.check/doctest_arrayd.exe.exe
-1/8 Test #1: doctest_arrayd ...................***Not Run   0.00 sec
     Start 2: doctest_arrayt
     Start 3: doctest_complex
     Start 4: doctest_complex_io
@@ -17,20 +8,25 @@ Release/D:/projects/2024-misis-fall/misis2024f-24-01-kuleshevskiy-a-e/bin.check/
     Start 6: doctest_rational_io
     Start 7: doctest_queuea
     Start 8: doctest_stackl
-2/8 Test #2: doctest_arrayt ...................   Passed    0.07 sec
-3/8 Test #3: doctest_complex ..................   Passed    0.05 sec
-4/8 Test #4: doctest_complex_io ...............***Failed    0.04 sec
-5/8 Test #5: doctest_rational .................   Passed    0.04 sec
-6/8 Test #6: doctest_rational_io ..............***Failed    0.02 sec
-7/8 Test #7: doctest_queuea ...................***Failed    0.02 sec
-8/8 Test #8: doctest_stackl ...................   Passed    0.01 sec
+1/8 Test #1: doctest_arrayd ...................***Timeout  13.80 sec
+2/8 Test #2: doctest_arrayt ...................***Timeout  10.22 sec
+3/8 Test #3: doctest_complex ..................***Timeout   1.94 sec
+4/8 Test #4: doctest_complex_io ...............***Timeout   0.59 sec
+5/8 Test #5: doctest_rational .................***Timeout   0.45 sec
+6/8 Test #6: doctest_rational_io ..............***Timeout   0.31 sec
+7/8 Test #7: doctest_queuea ...................***Timeout   0.19 sec
+8/8 Test #8: doctest_stackl ...................***Timeout   0.12 sec
 
-50% tests passed, 4 tests failed out of 8
+0% tests passed, 8 tests failed out of 8
 
-Total Test time (real) =   0.08 sec
+Total Test time (real) =  13.85 sec
 
 The following tests FAILED:
-	  1 - doctest_arrayd (Not Run)
-	  4 - doctest_complex_io (Failed)
-	  6 - doctest_rational_io (Failed)
-	  7 - doctest_queuea (Failed)
+	  1 - doctest_arrayd (Timeout)
+	  2 - doctest_arrayt (Timeout)
+	  3 - doctest_complex (Timeout)
+	  4 - doctest_complex_io (Timeout)
+	  5 - doctest_rational (Timeout)
+	  6 - doctest_rational_io (Timeout)
+	  7 - doctest_queuea (Timeout)
+	  8 - doctest_stackl (Timeout)
